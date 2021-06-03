@@ -1,0 +1,14 @@
+const clear = document.querySelector(".clear");
+const date = document.getElementById("date");
+const list = document.getElementById("list");
+const input = document.getElementById("input");
+
+function generateTodo(input) {
+  const text = `
+  <li class="item">
+    <i class="fa fa-circle thin complete"></i>
+    <p class="text">Drink coffee</p>
+    <i class="fa fa-trash-o delete"></i>
+  </li>
+  `;
+}

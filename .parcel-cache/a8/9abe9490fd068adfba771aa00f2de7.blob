@@ -1,0 +1,89 @@
+const clear = document.querySelector(".clear");
+const dateElement = document.getElementById("date");
+const list = document.getElementById("list");
+const input = document.getElementById("input");
+
+const CHECK = "fa-check-circle";
+const UNCHECK = "fa-circle-thin";
+const LINE_THROUGH = "lineThrough";
+let id = 0;
+
+// show today date
+const options = { weekday: "long", month: "short", day: "numeric" };
+const today = new Date();
+
+dateElement.innerHTML = today.toLocaleDateString("en-US", options);
+
+// small database
+let LIST = [];
+
+function generateTodo(input, id, done, trash) {
+  if (trash) return;
+
+  const DONE = done ? CHECK : UNCHECK;
+  const LINE = done ? LINE_THROUGH : "";
+
+  const text = `
+  <li class="item" key=${id}>
+    <i class="fa ${DONE} co" job='complete' id=${id}></i>
+    <p class="text ${LINE}">${input}</p>
+    <i class="fa fa-trash-o de" job='delete' id=${id}></i>
+  </li>
+  `;
+
+  const position = "afterbegin";
+  list.insertAdjacentHTML(position, text);
+}
+
+document.addEventListener("keypress", function (e) {
+  if (e.keyCode === 13) {
+    const toDo = input.value;
+    if (!toDo) alert("please, write down your task!");
+
+    if (toDo) {
+      generateTodo(toDo, id, false, false);
+      LIST.push({
+        todo: toDo,
+        id: id,
+        done: false,
+        trash: false,
+      });
+      id++;
+    }
+    input.value = "";
+  }
+});
+
+function completeTodo(e) {
+  e.classList.toggle(CHECK);
+  e.classList.toggle(UNCHECK);
+  e.parentNode.querySelector(".text").classList.toggle(LINE_THROUGH);
+
+  // CHECK
+  LIST[e.id].done = LIST[e.id].done ? false : true;
+}
+
+// remove todo
+function removeTodo(e) {
+  e.parentNode.parentNode.removeChild(e.parentNode);
+
+  LIST[e.id].trash = true;
+}
+
+// target the item created dynamically
+
+list.addEventListener("click", function (e) {
+  const element = e.target;
+  console.log(e.target);
+  const elementJob = element.attributes.job.value;
+  console.log(elementJob);
+  // complete or delete
+
+  if (elementJob === "complete") {
+    completeTodo(element);
+  }
+
+  if (elementJob === "delete") {
+    removeTodo(element);
+  }
+});

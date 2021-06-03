@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/index.HASH_REF_fd2ab90d027c36bc482ca7edea68c68a.css">
+    <link rel="stylesheet" href="/index.HASH_REF_f98e03969b978c05e3a7ba8cc816dfaa.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="clear">
+          <i class="fa fa-refresh"></i>
+        </div>
+        <div id="date"></div>
+      </div>
+      <div class="content">
+        <ul id="list">
+          <li class="item">
+            <i class="fa fa-circle thin complete"></i>
+            <p class="text">Drink coffee</p>
+            <i class="fa fa-trash-o delete"></i>
+          </li>
+        </ul>
+        <div class="add-item">
+          <i class="fa fa-plus-circle"></i>
+          <input type="text" id="input" placeholder="Add new task!">
+        </div>
+      </div>
+    </div>
+
+    <script src="/index.HASH_REF_b9167a940929bdec77a4418224e1d95d.js"></script>
+  </body>
+</html>

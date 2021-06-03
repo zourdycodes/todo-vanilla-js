@@ -1,0 +1,26 @@
+const clear = document.querySelector(".clear");
+const date = document.getElementById("date");
+const list = document.getElementById("list");
+const input = document.getElementById("input");
+
+function generateTodo(input) {
+  const text = `
+  <li class="item">
+    <i class="fa fa-circle thin complete" job='complete'></i>
+    <p class="text">${input}</p>
+    <i class="fa fa-trash-o delete" job='delete></i>
+  </li>
+  `;
+
+  const position = "afterbegin";
+  list.insertAdjacentHTML(position, text);
+}
+
+document.addEventListener("keypress", function (e) {
+  console.log(e.keyCode);
+
+  if (e.keyCode === 13) {
+    const toDo = input.value;
+    if (!toDo) return;
+  }
+});

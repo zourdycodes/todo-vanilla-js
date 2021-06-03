@@ -1,0 +1,2 @@
+const clear = document.querySelector(".clear");
+const date = document.getElementById("date");

@@ -1,0 +1,43 @@
+const clear = document.querySelector(".clear");
+const date = document.getElementById("date");
+const list = document.getElementById("list");
+const input = document.getElementById("input");
+
+const CHECK = "fa-check-circle";
+const UNCHECK = "fa-circle-thin";
+const LINE_THROUGH = "lineThrough";
+let id = 0;
+
+// small database
+const LIST = [];
+
+function generateTodo(input, id, done, trash) {
+  const text = `
+  <li class="item" key=${id}>
+    <i class="fa  complete" job='complete' id=${id}></i>
+    <p class="text">${input}</p>
+    <i class="fa fa-trash-o delete" job='delete' id=${id}></i>
+  </li>
+  `;
+
+  const position = "afterbegin";
+  list.insertAdjacentHTML(position, text);
+}
+
+document.addEventListener("keypress", function (e) {
+  if (e.keyCode === 13) {
+    const toDo = input.value;
+    if (!toDo) alert("please, write down your task!");
+
+    if (toDo) {
+      generateTodo(toDo);
+      LIST.push({
+        todo: toDo,
+        id: id,
+        done: false,
+        trash: false,
+      });
+      input.value = "";
+    }
+  }
+});
